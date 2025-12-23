@@ -1,5 +1,7 @@
 export default async function AboutPage() {
-  const res = await fetch("https://fastapi-vercel-iota.vercel.app/");
+  const apiUrl = process.env.FASTAPI_URL;
+
+  const res = await fetch(apiUrl, { cache: "no-store" });
   const data = await res.json();
 
   return (
