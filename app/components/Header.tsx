@@ -46,7 +46,7 @@ const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
           >
             ☰
           </button>
-          <h1 style={{ margin: 0 }}>Szia Laci</h1>
+          <h1 style={{ margin: 0 }}>Hello World</h1>
         </div>
       </header>
 
