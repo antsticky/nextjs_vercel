@@ -1,5 +1,6 @@
 export default async function AboutPage() {
   const apiUrl = process.env.FASTAPI_URL;
+  console.log("FASTAPI_URL =", process.env.FASTAPI_URL);
 
   const res = await fetch(apiUrl, { cache: "no-store" });
   const data = await res.json();
