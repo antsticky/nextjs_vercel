@@ -13,7 +13,7 @@ export default async function AboutPage() {
 
       <p>
         This application demonstrates how to build a Next.js project with a dynamic hamburger menu,
-        infinite scrolling homepage, and responsive panels.
+        infinite scrolling homepage, and responsive panels...
       </p>
     </div>
   );
