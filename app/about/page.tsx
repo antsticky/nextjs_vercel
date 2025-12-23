@@ -1,5 +1,7 @@
+const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL;
+
 export default async function AboutPage() {
-  const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL;
+  
   console.log("FASTAPI_URL =", process.env.NEXT_PUBLIC_FASTAPI_URL);
 
   if (!apiUrl) { throw new Error("FASTAPI_URL is not defined"); }
