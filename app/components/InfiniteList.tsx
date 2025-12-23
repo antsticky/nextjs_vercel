@@ -25,7 +25,7 @@ export default function InfiniteList() {
           alignItems: 'center', 
           justifyContent: 'center' 
         }}>
-          Item {item}
+          keksz {item}
         </div>
       ))}
     </div>
