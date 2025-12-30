@@ -9,10 +9,11 @@ import Hamburger from './icons/Hamburger'
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'home' | 'about' | 'settings'>('home')
-  const router = useRouter()
   const [hoveredTab, setHoveredTab] = useState<'home' | 'about' | 'settings' | null>(null)
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
   const [touchEndX, setTouchEndX] = useState<number | null>(null)
+
+  const router = useRouter()
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX)
@@ -23,24 +24,16 @@ export default function Header() {
   }
 
   const handleTouchEnd = () => {
-    if (!touchStartX || !touchEndX) return
+    if (touchStartX === null || touchEndX === null) return
 
     const distance = touchEndX - touchStartX
 
-    // Swipe right (open)
-    if (distance > 60) {
-      setOpen(true)
-    }
-
-    // Swipe left (close)
-    if (distance < -60) {
-      setOpen(false)
-    }
+    if (distance > 60) setOpen(true)
+    if (distance < -60) setOpen(false)
 
     setTouchStartX(null)
     setTouchEndX(null)
   }
-
 
   const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
     setActiveTab(tab)
@@ -49,44 +42,36 @@ export default function Header() {
   }
 
   return (
-    <>
+    <div
+      className={styles.swipeLayer}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <header className={styles.header}>
         <div className={styles.left}>
-          {/* Desktop + Tablet: Hamburger */}
-          <button
-            className={styles.hamburger}
-            onClick={() => setOpen(!open)}
-          >
+          <button className={styles.hamburger} onClick={() => setOpen(!open)}>
             <Hamburger />
           </button>
 
-          {/* Tablet + Mobile: Small Icon */}
-          <button
-            className={styles.smallIcon}
-            onClick={() => setOpen(!open)}
-          >
+          <button className={styles.smallIcon} onClick={() => setOpen(!open)}>
             <LogoSmall />
           </button>
 
-          {/* Desktop only: Title */}
           <h1 className={styles.textTitle}>Hello World!</h1>
         </div>
 
-        {/* Right side login */}
         <button className={styles.loginButton}>Login</button>
       </header>
 
-      {/* Overlay menu */}
-      <div
-    className={styles.touchArea}
-    onTouchStart={handleTouchStart}
-    onTouchMove={handleTouchMove}
-    onTouchEnd={handleTouchEnd}
-  >
       {open && (
         <div className={styles.overlay}>
-          <div className={styles.leftPanel} onMouseLeave={() => setHoveredTab(null)}>
+          <div
+            className={styles.leftPanel}
+            onMouseLeave={() => setHoveredTab(null)}
+          >
             <h2>Menu</h2>
+
             <ul className={styles.menuList}>
               <li
                 className={styles.menuItem}
@@ -96,15 +81,13 @@ export default function Header() {
                 Home
               </li>
 
-
               <li
                 className={styles.menuItem}
                 onMouseEnter={() => setHoveredTab('about')}
                 onClick={() => handleNavigation('about', '/about')}
               >
                 About
-            </li>
-
+              </li>
 
               <li
                 className={styles.menuItem}
@@ -113,7 +96,6 @@ export default function Header() {
               >
                 Settings
               </li>
-
             </ul>
           </div>
 
@@ -125,12 +107,14 @@ export default function Header() {
                   <p>Welcome to the home summary page.</p>
                 </>
               )}
+
               {hoveredTab === 'about' && (
                 <>
                   <h2>About</h2>
                   <p>This application demonstrates Next.js with a dynamic menu and infinite scroll.</p>
                 </>
               )}
+
               {hoveredTab === 'settings' && (
                 <>
                   <h2>Settings</h2>
@@ -139,10 +123,8 @@ export default function Header() {
               )}
             </div>
           )}
-
         </div>
       )}
-      </div>
-    </>
+    </div>
   )
 }
