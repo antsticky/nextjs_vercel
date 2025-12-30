@@ -10,6 +10,7 @@ export default function Header() {
   const [open, setOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'home' | 'about' | 'settings'>('home')
   const router = useRouter()
+  const [hoveredTab, setHoveredTab] = useState<'home' | 'about' | 'settings' | null>(null)
 
   const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
     setActiveTab(tab)
@@ -48,52 +49,61 @@ export default function Header() {
       {/* Overlay menu */}
       {open && (
         <div className={styles.overlay}>
-          <div className={styles.leftPanel}>
+          <div className={styles.leftPanel} onMouseLeave={() => setHoveredTab(null)}>
             <h2>Menu</h2>
             <ul className={styles.menuList}>
               <li
                 className={styles.menuItem}
+                onMouseEnter={() => setHoveredTab('home')}
                 onClick={() => handleNavigation('home', '/home')}
               >
                 Home
               </li>
 
-              <li
-                className={styles.menuItem}
-                onClick={() => handleNavigation('about', '/about')}
-              >
-                About
-              </li>
 
               <li
                 className={styles.menuItem}
+                onMouseEnter={() => setHoveredTab('about')}
+                onClick={() => handleNavigation('about', '/about')}
+              >
+                About
+            </li>
+
+
+              <li
+                className={styles.menuItem}
+                onMouseEnter={() => setHoveredTab('settings')}
                 onClick={() => handleNavigation('settings', '/settings')}
               >
                 Settings
               </li>
+
             </ul>
           </div>
 
-          <div className={styles.rightPanel}>
-            {activeTab === 'home' && (
-              <>
-                <h2>Summary</h2>
-                <p>Welcome to the home summary page.</p>
-              </>
-            )}
-            {activeTab === 'about' && (
-              <>
-                <h2>About</h2>
-                <p>This application demonstrates Next.js with a dynamic menu and infinite scroll.</p>
-              </>
-            )}
-            {activeTab === 'settings' && (
-              <>
-                <h2>Settings</h2>
-                <p>Here you can configure preferences, themes, and other options.</p>
-              </>
-            )}
-          </div>
+          {hoveredTab && (
+            <div className={styles.rightPanel}>
+              {hoveredTab === 'home' && (
+                <>
+                  <h2>Summary</h2>
+                  <p>Welcome to the home summary page.</p>
+                </>
+              )}
+              {hoveredTab === 'about' && (
+                <>
+                  <h2>About</h2>
+                  <p>This application demonstrates Next.js with a dynamic menu and infinite scroll.</p>
+                </>
+              )}
+              {hoveredTab === 'settings' && (
+                <>
+                  <h2>Settings</h2>
+                  <p>Here you can configure preferences, themes, and other options.</p>
+                </>
+              )}
+            </div>
+          )}
+
         </div>
       )}
     </>

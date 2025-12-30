@@ -94,15 +94,27 @@
 
 /* Left panel */
 .leftPanel {
-  width: 250px;
+  width: 150px;
   background: #222;
   color: #fff;
   padding: 1rem;
+  clip-path: inset(0 100% 0 0); /* fully hidden */
+  animation: curtainReveal 0.45s ease forwards;
+}
+
+@keyframes curtainReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .menuList {
   list-style: none;
   padding: 0;
+  text-align: center;
 }
 
 .menuItem {
@@ -125,4 +137,24 @@
   background: #888aeeff;
   padding: 1rem;
   padding-top: 60px;
+  opacity: 0;
+  animation: fadeInRight 0.3s ease forwards;
+}
+
+/* Hide right panel on mobile */
+@media (max-width: 639px) {
+  .rightPanel {
+    display: none;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
