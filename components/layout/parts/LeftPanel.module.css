@@ -1,0 +1,24 @@
+.leftPanel {
+  position: relative;
+  z-index: 2001;
+  width: 150px;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  padding-top: 120px;
+  clip-path: inset(0 100% 0 0);
+  animation: curtainReveal 0.45s ease forwards;
+}
+
+@keyframes curtainReveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  padding-top: 60px;
+  text-align: center;
+}

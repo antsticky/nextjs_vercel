@@ -1,0 +1,14 @@
+.menuItem {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  color: #00aced;
+}
+
+@media (max-width: 639px) {
+  .menuItem:hover {
+    color: inherit !important;
+  }
+}

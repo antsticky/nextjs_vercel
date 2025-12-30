@@ -1,163 +1,4 @@
-/* Header container */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: #333;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 2000; /* ensure header is always on top */
-}
-
-/* Left group */
-.left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Hidden by default */
-.hamburger,
-.smallIcon {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-.textTitle {
-  display: none;
-  margin: 0;
-}
-
-/* Desktop (wide) */
-@media (min-width: 1024px) {
-  .hamburger {
-    display: block;
-  }
-  .textTitle {
-    display: block;
-  }
-}
-
-/* Tablet (mid) */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .hamburger {
-    display: block;
-  }
-  .smallIcon {
-    display: block;
-  }
-}
-
-/* Mobile (small) */
-@media (max-width: 639px) {
-  .smallIcon {
-    display: block;
-  }
-}
-
-/* Login button */
-.loginButton {
-  background: #00aced;
-  border: none;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-/* Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1500; /* ABOVE swipe layer */
-}
-
-/* Left panel (curtain reveal) */
-.leftPanel {
-  position: relative;
-  z-index: 2001; /* ABOVE swipe layer */
-  width: 150px;
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  clip-path: inset(0 100% 0 0);
-  animation: curtainReveal 0.45s ease forwards;
-}
-
-@keyframes curtainReveal {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.menuList {
-  list-style: none;
-  padding: 0;
-  padding-top: 60px;
-  text-align: center;
-}
-
-.menuItem {
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  color: #00aced;
-}
-
-/* Disable hover on mobile */
-@media (max-width: 639px) {
-  .menuItem:hover {
-    color: inherit !important;
-  }
-}
-
-/* Right panel (hover reveal) */
-.rightPanel {
-  position: relative;
-  flex: 1;
-  background: #888aeeff;
-  padding: 1rem;
-  padding-left: 80px; /* match main content */
-  padding-top: 100px;
-  opacity: 0;
-  animation: fadeInRight 0.3s ease forwards;
-}
-
-
-@media (max-width: 639px) {
-  .rightPanel {
-    display: none;
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+/* components/layout/Header/Header.module.css */
 
 /* FULL SCREEN SWIPE LAYER */
 .swipeLayer {
@@ -168,4 +9,16 @@
   z-index: 100; /* BELOW overlay, BELOW panels */
   touch-action: pan-y;
   pointer-events: auto;
+}
+
+/* Overlay container */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1500;
 }
