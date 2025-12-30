@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.pageWrapper main {
+  padding-top: 69px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+

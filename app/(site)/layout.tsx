@@ -6,8 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>{children}</main>
+        <div className="pageWrapper"> <Header /> <main>{children}</main> </div>
       </body>
     </html>
   )
