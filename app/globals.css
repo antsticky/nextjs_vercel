@@ -26,8 +26,23 @@ body {
 }
 
 .pageWrapper main {
-  padding-top: 69px;
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-top: 89px;
 }
+
+/* Mobile — fixed padding */
+@media (max-width: 639px) {
+  .pageWrapper main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Tablet + Desktop — fluid padding */
+@media (min-width: 640px) {
+  .pageWrapper main {
+    padding-left: clamp(40px, 8vw, 200px);
+    padding-right: clamp(40px, 8vw, 200px);
+  }
+}
+
 
