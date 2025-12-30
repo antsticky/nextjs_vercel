@@ -11,6 +11,36 @@ export default function Header() {
   const [activeTab, setActiveTab] = useState<'home' | 'about' | 'settings'>('home')
   const router = useRouter()
   const [hoveredTab, setHoveredTab] = useState<'home' | 'about' | 'settings' | null>(null)
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
+  const [touchEndX, setTouchEndX] = useState<number | null>(null)
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return
+
+    const distance = touchEndX - touchStartX
+
+    // Swipe right (open)
+    if (distance > 60) {
+      setOpen(true)
+    }
+
+    // Swipe left (close)
+    if (distance < -60) {
+      setOpen(false)
+    }
+
+    setTouchStartX(null)
+    setTouchEndX(null)
+  }
+
 
   const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
     setActiveTab(tab)
@@ -47,6 +77,12 @@ export default function Header() {
       </header>
 
       {/* Overlay menu */}
+      <div
+    className={styles.touchArea}
+    onTouchStart={handleTouchStart}
+    onTouchMove={handleTouchMove}
+    onTouchEnd={handleTouchEnd}
+  >
       {open && (
         <div className={styles.overlay}>
           <div className={styles.leftPanel} onMouseLeave={() => setHoveredTab(null)}>
@@ -106,6 +142,7 @@ export default function Header() {
 
         </div>
       )}
+      </div>
     </>
   )
 }
