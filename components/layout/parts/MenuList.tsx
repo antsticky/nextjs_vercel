@@ -15,7 +15,7 @@ export default function MenuList({
       <MenuItem
         label="Home"
         onHover={() => onHover('home')}
-        onClick={() => onNavigate('home', '/home')}
+        onClick={() => onNavigate('home', '/')}
       />
 
       <MenuItem

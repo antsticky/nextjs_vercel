@@ -1,5 +1,10 @@
-import InfiniteList from '@/components/InfiniteList'
-
 export default function HomePage() {
-  return <InfiniteList />
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h1>Welcome</h1>
+      <p>
+        oksa
+      </p>
+    </div>
+  )
 }
