@@ -38,6 +38,7 @@ export default function Header() {
   const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
     setActiveTab(tab)
     setOpen(false)
+    setHoveredTab(null)
     router.push(path)
   }
 
