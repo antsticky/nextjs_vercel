@@ -1,0 +1,128 @@
+/* Header container */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+/* Left group */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Hidden by default */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.smallIcon {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.textTitle {
+  display: none;
+  margin: 0;
+}
+
+/* Desktop (wide) */
+@media (min-width: 1024px) {
+  .hamburger {
+    display: block;
+  }
+  .textTitle {
+    display: block;
+  }
+}
+
+/* Tablet (mid) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hamburger {
+    display: block;
+  }
+  .smallIcon {
+    display: block;
+  }
+}
+
+/* Mobile (small) */
+@media (max-width: 639px) {
+  .smallIcon {
+    display: block;
+  }
+}
+
+/* Login button */
+.loginButton {
+  background: #00aced;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Left panel */
+.leftPanel {
+  width: 250px;
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItem {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.menuItem:hover { color: #00aced; }
+
+/* Disable hover on mobile */
+@media (max-width: 639px) {
+  .menuItem:hover {
+    color: inherit !important;
+  }
+}
+
+/* Right panel */
+.rightPanel {
+  flex: 1;
+  background: #888aeeff;
+  padding: 1rem;
+  padding-top: 60px;
+}

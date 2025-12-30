@@ -1,113 +1,80 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation' 
+import { useRouter } from 'next/navigation'
+import styles from './Header.module.css'
+import LogoSmall from './icons/LogoSmall'
+import Hamburger from './icons/Hamburger'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'home' | 'about' | 'settings'>('home')
   const router = useRouter()
 
-const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
-    setActiveTab(tab)   // update right panel state if needed
-    setOpen(false)      // close overlay
-    router.push(path)   // navigate to route
+  const handleNavigation = (tab: 'home' | 'about' | 'settings', path: string) => {
+    setActiveTab(tab)
+    setOpen(false)
+    router.push(path)
   }
 
   return (
     <>
-      <header
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '60px',
-          background: '#333',
-          color: '#fff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 1rem',
-          zIndex: 1000,
-        }}
-      >
-        {/* Left side: Hamburger + Title */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <header className={styles.header}>
+        <div className={styles.left}>
+          {/* Desktop + Tablet: Hamburger */}
           <button
+            className={styles.hamburger}
             onClick={() => setOpen(!open)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#fff',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-            }}
           >
-            ☰
+            <Hamburger />
           </button>
-          <h1 style={{ margin: 0 }}>Hello World!</h1>
+
+          {/* Tablet + Mobile: Small Icon */}
+          <button
+            className={styles.smallIcon}
+            onClick={() => setOpen(!open)}
+          >
+            <LogoSmall />
+          </button>
+
+          {/* Desktop only: Title */}
+          <h1 className={styles.textTitle}>Hello World!</h1>
         </div>
+
+        {/* Right side login */}
+        <button className={styles.loginButton}>Login</button>
       </header>
 
       {/* Overlay menu */}
       {open && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: '100%',
-            display: 'flex',
-            background: 'rgba(0,0,0,0.5)',
-            zIndex: 999,
-          }}
-        >
-          {/* Left Panel */}
-          <div
-            style={{
-              width: '250px',
-              background: '#222',
-              color: '#fff',
-              padding: '1rem',
-            }}
-          >
+        <div className={styles.overlay}>
+          <div className={styles.leftPanel}>
             <h2>Menu</h2>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul className={styles.menuList}>
               <li
-                style={{ marginBottom: '1rem', cursor: 'pointer' }}
+                className={styles.menuItem}
                 onClick={() => handleNavigation('home', '/home')}
               >
                 Home
               </li>
+
               <li
-                style={{ marginBottom: '1rem', cursor: 'pointer' }}
+                className={styles.menuItem}
                 onClick={() => handleNavigation('about', '/about')}
-                onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#00aced'
-                    setActiveTab('about')
-                }}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
               >
                 About
               </li>
+
               <li
-                style={{ marginBottom: '1rem', cursor: 'pointer' }}
+                className={styles.menuItem}
                 onClick={() => handleNavigation('settings', '/settings')}
-                onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#00aced'
-                    setActiveTab('settings')
-                }}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
               >
                 Settings
               </li>
             </ul>
           </div>
 
-          {/* Right Panel */}
-          <div style={{ flex: 1, background: '#888aeeff', padding: '1rem', paddingTop: '60px' }}>
+          <div className={styles.rightPanel}>
             {activeTab === 'home' && (
               <>
                 <h2>Summary</h2>
