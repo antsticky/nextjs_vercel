@@ -19,17 +19,27 @@
   }
 }
 
+html, body {
+  height: 100%;        /* ⭐ Required for flex layout */
+  margin: 0;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.pageWrapper { min-height: 100vh; display: flex; flex-direction: column; }
+/* ⭐ Replaces min-height: 100vh */
+.pageWrapper {
+  min-height: 100%;    /* Use real document height */
+  display: flex;
+  flex-direction: column;
+}
 
 .pageWrapper main {
   padding-top: 89px;
-  flex: 1;
+  flex: 1;             /* ⭐ Pushes footer to bottom */
 }
 
 /* Mobile — fixed padding */
@@ -47,5 +57,3 @@ body {
     padding-right: clamp(40px, 8vw, 200px);
   }
 }
-
-
