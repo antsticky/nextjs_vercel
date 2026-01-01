@@ -31,7 +31,3 @@
 .leftPanel.open {
   animation: curtainReveal 0.45s ease forwards;
 }
-
-.leftPanel.close {
-  animation: curtainClose 0.45s ease forwards;
-}
