@@ -21,8 +21,9 @@ export const DarkMode: Story = {
     dark: true,
     children: (
       <>
-        <MenuElement icon="/assets/accessibility.svg" label="Item 1" />
-        <MenuElement icon="/assets/accessibility.svg" label="Item 2" />
+        <MenuElement icon="/accessibility.svg" label="Item 1" />
+        <MenuElement icon="/accessibility.svg" label="hosszu item név ez" />
+        <MenuElement icon="/accessibility.svg" label="Item 2" />
       </>
     ),
   },
@@ -32,8 +33,8 @@ export const lightMode: Story = {
   args: {
     children: (
       <>
-        <MenuElement icon="/assets/accessibility.svg" label="Item 1" />
-        <MenuElement icon="/assets/accessibility.svg" label="Item 2" />
+        <MenuElement icon="/accessibility.svg" label="Item 1" />
+        <MenuElement icon="/accessibility.svg" label="Item 2" />
       </>
     ),
   },

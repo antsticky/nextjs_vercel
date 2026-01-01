@@ -19,13 +19,13 @@ type Story = StoryObj<typeof meta>;
 export const DarkMode: Story = {
   decorators: [
     (Story) => (
-      <MenuContext.Provider value={{ invert: false, dark: "#000000",fontColor: "#ffffff" }}>
+      <MenuContext.Provider value={{ invert: false, dark: "#000000" }}>
         <Story />
       </MenuContext.Provider>
     ),
   ],
   args: {
-    icon: "/assets/accessibility.svg",
+    icon: "/accessibility.svg",
     label: "label test",
   },
 };
@@ -33,13 +33,13 @@ export const DarkMode: Story = {
 export const lightMode: Story = {
   decorators: [
     (Story) => (
-      <MenuContext.Provider value={{ invert: false, dark: "#ffffffff", fontColor: "#000000" }}>
+      <MenuContext.Provider value={{ invert: false, dark: "#ffffffff" }}>
         <Story />
       </MenuContext.Provider>
     ),
   ],
   args: {
-    icon: "/assets/accessibility.svg",
+    icon: "/accessibility.svg",
     label: "label test",
   },
 };
@@ -47,13 +47,13 @@ export const lightMode: Story = {
 export const invertMode: Story = {
   decorators: [
     (Story) => (
-      <MenuContext.Provider value={{ invert: true, dark: "#a33131ff", fontColor: "#000000" }}>
+      <MenuContext.Provider value={{ invert: true, dark: "#a33131ff" }}>
         <Story />
       </MenuContext.Provider>
     ),
   ],
   args: {
-    icon: "/assets/accessibility.svg",
+    icon: "/accessibility.svg",
     label: "label test",
   },
 };
