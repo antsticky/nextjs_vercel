@@ -1,0 +1,37 @@
+.storybook-menu-element {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding: 0 10px;
+  transition: background 0.3s ease-in, font-size 0.3s ease-in;
+  font-size: 1.25rem;
+}
+
+.storybook-menu-element:hover {
+  cursor: pointer;
+  background: #310aaa !important;
+}
+
+.storybook-menu-element-invert {
+  flex-direction: row-reverse !important;
+}
+
+.storybook-menu-element img {
+  aspect-ratio: 1;
+  height: 35px;
+}
+
+.storybook-menu-element p {
+  margin: 0;
+  text-transform: lowercase;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  filter: invert(100%);
+}
+
+.storybook-menu-element p::first-letter {
+  text-transform: uppercase;
+}
