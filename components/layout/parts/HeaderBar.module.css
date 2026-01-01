@@ -5,15 +5,16 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 40px;
   background: #333;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 1.5rem 1rem;
   z-index: 2000;
   border-radius: 0 0 1rem 1rem;
+  font-size: 0.875rem;
 }
 
 .left {
@@ -63,7 +64,7 @@
 .loginButton {
   background: #00aced;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.7rem;
   color: #fff;
   cursor: pointer;
   border-radius: 4px;
