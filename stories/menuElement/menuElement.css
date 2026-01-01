@@ -1,0 +1,9 @@
+.storybook-menu-element {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.storybook-menu-element-invert {
+    flex-direction: row-reverse !important;
+}
