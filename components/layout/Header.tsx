@@ -32,17 +32,18 @@ export default function Header() {
     >
       <HeaderBar onToggle={() => setOpen(!open)} />
 
-      {open && (
-        <div className={styles.overlay}>
-          <LeftPanel
-            onHover={setHoveredTab}
-            onNavigate={handleNavigation}
-            onLeave={() => setHoveredTab(null)}
-          />
+      <div className={styles.overlay}>
+        <LeftPanel
+          isOpen={open}
+          onHover={setHoveredTab}
+          onNavigate={handleNavigation}
+          onLeave={() => setHoveredTab(null)}
+        />
 
-          {hoveredTab && <RightPanel tab={hoveredTab} />}
-        </div>
-      )}
+        {open && hoveredTab && <RightPanel tab={hoveredTab} />}
+
+      </div>
+
     </div>
   )
 }

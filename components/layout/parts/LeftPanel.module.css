@@ -9,7 +9,6 @@
   padding-top: 120px;
   padding-left: 3rem;
   clip-path: inset(0 100% 0 0);
-  animation: curtainReveal 0.45s ease forwards;
 }
 
 @keyframes curtainReveal {
@@ -17,9 +16,22 @@
   100% { clip-path: inset(0 0 0 0); }
 }
 
+@keyframes curtainClose { 
+  0% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
+}
+
 .menuList {
   list-style: none;
   padding: 0;
   padding-top: 60px;
   text-align: center;
+}
+
+.leftPanel.open {
+  animation: curtainReveal 0.45s ease forwards;
+}
+
+.leftPanel.close {
+  animation: curtainClose 0.45s ease forwards;
 }
