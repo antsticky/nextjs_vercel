@@ -4,9 +4,10 @@
   width: 150px;
   background: #222;
   color: #fff;
-  text-align: center;
+  text-align: left;
   padding: 1rem;
   padding-top: 120px;
+  padding-left: 3rem;
   clip-path: inset(0 100% 0 0);
   animation: curtainReveal 0.45s ease forwards;
   border-radius: 0 1rem 1rem 0;

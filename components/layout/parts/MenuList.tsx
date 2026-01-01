@@ -13,19 +13,19 @@ export default function MenuList({
   return (
     <ul className={styles.menuList}>
       <MenuItem
-        label="Home"
+        label="Recipes"
         onHover={() => onHover('home')}
         onClick={() => onNavigate('home', '/')}
       />
 
       <MenuItem
-        label="About"
+        label="Add New"
         onHover={() => onHover('about')}
         onClick={() => onNavigate('about', '/about')}
       />
 
       <MenuItem
-        label="Settings"
+        label="About"
         onHover={() => onHover('settings')}
         onClick={() => onNavigate('settings', '/settings')}
       />
