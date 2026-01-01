@@ -20,7 +20,7 @@ export const MenuElement = ({ icon, label, ...props }: MenuProps) => {
       {...props}
     >
       <img src={icon} alt="image"/>
-      <label>{label}</label>
+      <p>{label}</p>
     </div>
   );
 };

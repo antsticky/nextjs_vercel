@@ -11,7 +11,6 @@
 .storybook-menu-element:hover {
   cursor: pointer;
   background: #310aaa !important;
-  font-size: 1.5rem;
 }
 
 .storybook-menu-element-invert {
@@ -23,7 +22,8 @@
   height: 35px;
 }
 
-.storybook-menu-element label {
+.storybook-menu-element p {
+  margin: 0;
   text-transform: lowercase;
   text-overflow: ellipsis;
   text-wrap: nowrap;
@@ -32,6 +32,6 @@
   filter: invert(100%);
 }
 
-.storybook-menu-element label::first-letter {
+.storybook-menu-element p::first-letter {
   text-transform: uppercase;
 }
