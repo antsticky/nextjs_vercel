@@ -20,7 +20,7 @@ export default function HeaderBar({
           <LogoSmall />
         </button>
 
-        <h1 className={styles.textTitle}>Hello World!</h1>
+        <h1 className={styles.textTitle}>Sinkovicz's Cookbook</h1>
       </div>
 
       <button className={styles.loginButton}>Login</button>
