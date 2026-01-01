@@ -2,7 +2,7 @@
 
 import styles from './HeaderBar.module.css'
 import Hamburger from '../icons/Hamburger'
-import LogoSmall from '../icons/LogoSmall'
+import Image from 'next/image'
 
 export default function HeaderBar({
   onToggle,
@@ -17,7 +17,7 @@ export default function HeaderBar({
         </button>
 
         <button className={styles.smallIcon} onClick={onToggle}>
-          <LogoSmall />
+          <Image src="/cookbook.png" alt="LogoCooking" width={32} height={32} />
         </button>
 
         <h1 className={styles.textTitle}>Sinkovicz's Cookbook</h1>
