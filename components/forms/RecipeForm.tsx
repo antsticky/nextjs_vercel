@@ -4,6 +4,7 @@ import { useState } from 'react'
 import styles from './RecipeForm.module.css'
 
 export default function RecipeForm() {
+  const [name, setName] = useState('')
   const [categories, setCategories] = useState([''])
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }])
   const [steps, setSteps] = useState([''])
@@ -15,6 +16,7 @@ export default function RecipeForm() {
     e.preventDefault()
 
     const payload = {
+      name,
       categories: categories.filter(Boolean),
       ingredients: ingredients.filter((i) => i.name && i.quantity),
       steps: steps.filter(Boolean),
@@ -32,6 +34,15 @@ export default function RecipeForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
+      {/* Name */}
+      <h2>Recipe Name</h2>
+      <input
+        value={name}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+        placeholder="Enter recipe name"
+        className={styles.input}
+      />
+
       {/* Categories */}
       <h2>Categories</h2>
       {categories.map((cat, i) => (

@@ -59,13 +59,13 @@ export default function HomePage() {
           <li
             key={id}
             style={{
-              padding: '1rem 1.25rem',
+              padding: '1.2rem 1.4rem',
               background: '#00aced',
-              borderRadius: '10px',
+              borderRadius: '12px',
               boxShadow:
                 '0 2px 6px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.08)',
               fontSize: '1rem',
-              color: '#333',
+              color: '#fff',
               cursor: 'pointer',
               transition: 'transform 0.15s ease, box-shadow 0.15s ease',
             }}
@@ -80,7 +80,44 @@ export default function HomePage() {
                 '0 2px 6px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.08)'
             }}
           >
-            {recipe.categories?.[0] || `Recipe ${id}`}
+            {/* Recipe Name */}
+            <div
+              style={{
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                marginBottom: '0.5rem',
+              }}
+            >
+              {recipe.name || `Recipe ${id}`}
+            </div>
+
+            {/* Category Pills */}
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.4rem',
+              }}
+            >
+              {recipe.categories?.map((cat: string, index: number) => (
+                <span
+                  key={index}
+                  style={{
+                    background: '#051c2c',
+                    padding: '0.25rem 0.7rem',
+                    borderRadius: '999px',
+                    fontSize: '0.85rem',
+                    color: '#fff',
+                    whiteSpace: 'nowrap',
+                    maxWidth: '150px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
           </li>
         ))}
       </ul>
