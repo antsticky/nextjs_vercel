@@ -141,3 +141,84 @@
     border-radius: 12px;
   }
 }
+
+/* --- CENTER POPUP FEEDBACK --- */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  z-index: 9999;
+
+  animation: popupIn 0.35s ease forwards,
+             popupOut 0.4s ease 2.2s forwards;
+}
+
+/* Success bubble */
+.toastSuccess {
+  background: #0a8a0a;
+}
+
+/* Error bubble */
+.toastError {
+  background: #b00020;
+}
+
+/* Icon inside the circle */
+.toastIcon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+/* Checkmark / Cross animation */
+.checkmark,
+.cross {
+  animation: popIn 0.3s ease;
+}
+
+/* Popup scale animation */
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Fade + shrink out */
+@keyframes popupOut {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+
+/* Icon pop animation */
+@keyframes popIn {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+

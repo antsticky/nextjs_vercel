@@ -8,7 +8,9 @@ export default function RecipeForm() {
   const [categories, setCategories] = useState([''])
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }])
   const [steps, setSteps] = useState([''])
-  const [message, setMessage] = useState('')
+
+  // Toast state
+  const [toast, setToast] = useState<null | { type: 'success' | 'error'; message: string }>(null)
 
   const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL + 'recipe'
 
@@ -22,106 +24,141 @@ export default function RecipeForm() {
       steps: steps.filter(Boolean),
     }
 
-    const res = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
+    try {
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
 
-    const data = await res.json()
-    setMessage('Recipe saved with ID: ' + data.id)
+      if (!res.ok) {
+        throw new Error('Failed to save recipe')
+      }
+
+      const data = await res.json()
+
+      setToast({ type: 'success', message: 'Recipe saved' })
+      setTimeout(() => setToast(null), 2500)
+
+      // Reset form
+      setName('')
+      setCategories([''])
+      setIngredients([{ name: '', quantity: '' }])
+      setSteps([''])
+
+    } catch (err) {
+      setToast({ type: 'error', message: 'Error saving recipe. Please try again.' })
+      setTimeout(() => setToast(null), 3000)
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      {/* Name */}
-      <h2>Recipe Name</h2>
-      <input
-        value={name}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-        placeholder="Enter recipe name"
-        className={styles.input}
-      />
+    <>
+      {/* Toast Popup */}
+      {toast && (
+        <div
+          className={`${styles.toast} ${
+            toast.type === 'success' ? styles.toastSuccess : styles.toastError
+          }`}
+        >
+          <div className={styles.toastIcon}>
+            {toast.type === 'success' ? (
+              <span className={styles.checkmark}>✓</span>
+            ) : (
+              <span className={styles.cross}>✕</span>
+            )}
+          </div>
+          <p>{toast.message}</p>
+        </div>
+      )}
 
-      {/* Categories */}
-      <h2>Categories</h2>
-      {categories.map((cat, i) => (
+      {/* Form */}
+      <form onSubmit={handleSubmit} className={styles.form}>
+        {/* Name */}
+        <h2>Recipe Name</h2>
         <input
-          key={i}
-          value={cat}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const copy = [...categories]
-            copy[i] = e.target.value
-            setCategories(copy)
-          }}
-          placeholder="Category"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter recipe name"
           className={styles.input}
         />
-      ))}
-      <button type="button" onClick={() => setCategories([...categories, ''])}>
-        + Add Category
-      </button>
 
-      {/* Ingredients */}
-      <h2 className={styles.sectionTitle}>Ingredients</h2>
-      {ingredients.map((ing, i) => (
-        <div key={i} className={styles.ingredientRow}>
+        {/* Categories */}
+        <h2>Categories</h2>
+        {categories.map((cat, i) => (
           <input
-            value={ing.name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const copy = [...ingredients]
-              copy[i].name = e.target.value
-              setIngredients(copy)
+            key={i}
+            value={cat}
+            onChange={(e) => {
+              const copy = [...categories]
+              copy[i] = e.target.value
+              setCategories(copy)
             }}
-            placeholder="Name"
+            placeholder="Category"
             className={styles.input}
           />
-          <input
-            value={ing.quantity}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const copy = [...ingredients]
-              copy[i].quantity = e.target.value
-              setIngredients(copy)
+        ))}
+        <button type="button" onClick={() => setCategories([...categories, ''])}>
+          + Add Category
+        </button>
+
+        {/* Ingredients */}
+        <h2 className={styles.sectionTitle}>Ingredients</h2>
+        {ingredients.map((ing, i) => (
+          <div key={i} className={styles.ingredientRow}>
+            <input
+              value={ing.name}
+              onChange={(e) => {
+                const copy = [...ingredients]
+                copy[i].name = e.target.value
+                setIngredients(copy)
+              }}
+              placeholder="Name"
+              className={styles.input}
+            />
+            <input
+              value={ing.quantity}
+              onChange={(e) => {
+                const copy = [...ingredients]
+                copy[i].quantity = e.target.value
+                setIngredients(copy)
+              }}
+              placeholder="Quantity"
+              className={styles.input}
+            />
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => setIngredients([...ingredients, { name: '', quantity: '' }])}
+        >
+          + Add Ingredient
+        </button>
+
+        {/* Steps */}
+        <h2 className={styles.sectionTitle}>Steps</h2>
+        {steps.map((step, i) => (
+          <textarea
+            key={i}
+            value={step}
+            onChange={(e) => {
+              const copy = [...steps]
+              copy[i] = e.target.value
+              setSteps(copy)
             }}
-            placeholder="Quantity"
-            className={styles.input}
+            placeholder={`Step ${i + 1}`}
+            className={styles.textarea}
           />
+        ))}
+        <button type="button" onClick={() => setSteps([...steps, ''])}>
+          + Add Step
+        </button>
+
+        {/* Submit */}
+        <div className={styles.submitWrapper}>
+          <button type="submit">Save Recipe</button>
         </div>
-      ))}
-      <button
-        type="button"
-        onClick={() =>
-          setIngredients([...ingredients, { name: '', quantity: '' }])
-        }
-      >
-        + Add Ingredient
-      </button>
-
-      {/* Steps */}
-      <h2 className={styles.sectionTitle}>Steps</h2>
-      {steps.map((step, i) => (
-        <textarea
-          key={i}
-          value={step}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            const copy = [...steps]
-            copy[i] = e.target.value
-            setSteps(copy)
-          }}
-          placeholder={`Step ${i + 1}`}
-          className={styles.textarea}
-        />
-      ))}
-      <button type="button" onClick={() => setSteps([...steps, ''])}>
-        + Add Step
-      </button>
-
-      {/* Submit */}
-      <div className={styles.submitWrapper}>
-        <button type="submit">Save Recipe</button>
-      </div>
-
-      {message && <p className={styles.successMessage}>{message}</p>}
-    </form>
+      </form>
+    </>
   )
 }
