@@ -46,15 +46,37 @@ export default function HomePage() {
               </div>
 
               {/* BACK */}
+              {/* BACK */}
               <div className={styles.cardBack}>
                 <h3 className={styles.backTitle}>Ingredients</h3>
-                <ul className={styles.ingList}>
-                  {recipe.ingredients?.map((ing: any, i: number) => (
-                    <li key={i}>
-                      {ing.name} – {ing.quantity}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className={styles.ingList}>
+                  {(() => {
+                    const maxLines = 5
+                    const ings = recipe.ingredients || []
+
+                    const visibleIngredients =
+                      ings.length <= maxLines ? ings : ings.slice(0, maxLines)
+
+                    const hasMore = ings.length > maxLines
+
+                    return (
+                      <div className={styles.ingList}>
+                        {visibleIngredients.map((ing: any, i: number) => (
+                          <div key={i}>
+                            {ing.name} – {ing.quantity}
+                          </div>
+                        ))}
+
+                        {hasMore && <div className={styles.ellipsis}>…</div>}
+                      </div>
+                    )
+                  })()}
+                </div>
+
+                <div className={styles.moreLink}>
+                  <a href={`/recipe/${id}`}>More…</a>
+                </div>
               </div>
             </div>
           </li>

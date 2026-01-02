@@ -23,7 +23,6 @@
 /* --- RESPONSIVE GRID --- */
 .grid {
   display: grid;
-
   grid-template-columns: 1fr;
   gap: 1rem;
   margin: 0;
@@ -53,7 +52,6 @@
 .card {
   perspective: 1000px;
   min-height: 360px;
-  /* FIX: ensures card is visible */
 }
 
 .cardInner {
@@ -106,12 +104,22 @@
   font-size: 1.1rem;
 }
 
+/* --- INGREDIENT LIST (CLAMPED) --- */
 .ingList {
+  display: -webkit-box;
   margin: 0;
   padding: 0;
+  color: #fff;
   font-size: 0.95rem;
   line-height: 1.4;
-  list-style: none;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  /* number of visible lines */
+  line-clamp: 4;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 /* --- IMAGE --- */
@@ -139,8 +147,9 @@
   overflow: hidden;
   font-weight: bold;
   font-size: 1.2rem;
-  white-space: normal;
-  word-break: break-word;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
 
 /* --- PILLS --- */
@@ -160,4 +169,43 @@
   font-size: 0.85rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* --- MORE LINK --- */
+.moreLink {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.moreLink a {
+  transition: opacity 0.2s ease;
+  color: #00aced;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.moreLink a:hover {
+  opacity: 0.7;
+}
+
+.ingList {
+  /* keeps each ingredient on its own line */
+
+  display: -webkit-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  /* number of visible lines */
+  line-clamp: 6;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
