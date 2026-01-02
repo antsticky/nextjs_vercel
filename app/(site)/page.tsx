@@ -27,7 +27,15 @@ export default function HomePage() {
               {/* FRONT */}
               <div className={styles.cardFront}>
                 <div className={styles.cardImage}>
-                  <img src="/placeholder.png" alt={recipe.name} />
+                  <img
+                    src={
+                      recipe.images && Array.isArray(recipe.images) && recipe.images.length > 0
+                        ? recipe.images[0]
+                        : "/placeholder.png"
+                    }
+                    alt={recipe.name}
+                  />
+
                 </div>
 
                 <div className={styles.cardContent}>
@@ -36,12 +44,27 @@ export default function HomePage() {
                   </div>
 
                   <div className={styles.pills}>
-                    {recipe.categories?.map((cat: string, index: number) => (
-                      <span key={index} className={styles.pill}>
-                        {cat}
-                      </span>
-                    ))}
+                    {(() => {
+                      const maxPills = 2
+                      const cats = recipe.categories || []
+
+                      const visible = cats.slice(0, maxPills)
+                      const hasMore = cats.length > maxPills
+
+                      return (
+                        <>
+                          {visible.map((cat: string, i: number) => (
+                            <span key={i} className={styles.pill}>
+                              {cat}
+                            </span>
+                          ))}
+
+                          {hasMore && <span className={styles.pill}>…</span>}
+                        </>
+                      )
+                    })()}
                   </div>
+
                 </div>
               </div>
 
