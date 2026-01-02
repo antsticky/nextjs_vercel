@@ -1,222 +1,221 @@
 /* --- PAGE LAYOUT --- */
 .container {
-    margin: 0 auto;
-    padding: 2rem;
-    max-width: 1100px;
-    font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1100px;
+  font-family: Arial, sans-serif;
 }
 
 .title {
-    margin-bottom: 1rem;
-    color: #00aced;
-    font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00aced;
+  font-size: 2rem;
 }
 
 .subtitle {
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 0.4rem;
-    color: #00aced;
-    font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.4rem;
+  color: #00aced;
+  font-size: 1.4rem;
 }
 
 /* --- RESPONSIVE GRID --- */
 .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 @media (min-width: 600px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 900px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
-    .grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* --- CARD BASE --- */
 .card {
-    perspective: 1000px;
-    min-height: 360px;
+  perspective: 1000px;
+  min-height: 360px;
 }
 
 .cardInner {
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-    border-radius: 12px;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
 }
 
 .card:hover .cardInner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 /* --- FRONT & BACK SHARED --- */
 .cardFront,
 .cardBack {
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* --- FRONT SIDE --- */
 .cardFront {
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.05),
-        0 6px 18px rgba(0, 0, 0, 0.08);
-    background: #00aced;
-    color: #fff;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.08);
+  background: #00aced;
+  color: #fff;
 }
 
 /* --- BACK SIDE --- */
 .cardBack {
-    display: flex;
-    flex-direction: column;
-    transform: rotateY(180deg);
-    background: #051c2c;
-    padding: 1rem;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  background: #051c2c;
+  padding: 1rem;
+  color: #fff;
 }
 
 .backTitle {
-    margin: 0 0 0.6rem 0;
-    border-bottom: 2px solid #00aced;
-    padding-bottom: 0.3rem;
-    font-size: 1.1rem;
+  margin: 0 0 0.6rem 0;
+  border-bottom: 2px solid #00aced;
+  padding-bottom: 0.3rem;
+  font-size: 1.1rem;
 }
 
 /* --- INGREDIENT LIST (CLAMPED) --- */
 .ingList {
-    display: -webkit-box;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    /* number of visible lines */
-    line-clamp: 4;
+  display: -webkit-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  /* number of visible lines */
+  line-clamp: 4;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 /* --- IMAGE --- */
 .cardImage {
-    width: 100%;
-    height: 260px;
-    overflow: hidden;
-    /* ensures cropping */
-    border-radius: 12px 12px 0 0;
-    /* optional, matches card */
+  /* ensures cropping */
+  border-radius: 12px 12px 0 0;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  /* optional, matches card */
 }
 
 .cardImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* best fill: keeps aspect ratio, crops overflow */
-    object-position: center;
-    /* centers the crop */
-    display: block;
+  /* centers the crop */
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* best fill: keeps aspect ratio, crops overflow */
+  object-position: center;
 }
-
 
 /* --- CONTENT BELOW IMAGE --- */
 .cardContent {
-    padding: 1rem 1.2rem;
+  padding: 1rem 1.2rem;
 }
 
 /* --- TITLE --- */
 .cardTitle {
-    margin-bottom: 0.6rem;
-    overflow: hidden;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-overflow: ellipsis;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
 
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* --- PILLS --- */
 .pills {
-    display: flex;
-    flex-wrap: nowrap;
-    /* keep pills on one line */
-    gap: 0.4rem;
-    overflow: hidden;
-    /* hide extra pills */
+  display: flex;
+  flex-wrap: nowrap;
+  /* keep pills on one line */
+  gap: 0.4rem;
+  overflow: hidden;
+  /* hide extra pills */
 }
 
 .pill {
-    border-radius: 999px;
-    background: #051c2c;
-    padding: 0.25rem 0.7rem;
-    color: #fff;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100px;
-    /* prevents long words from breaking layout */
+  border-radius: 999px;
+  background: #051c2c;
+  padding: 0.25rem 0.7rem;
+  max-width: 100px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* prevents long words from breaking layout */
 }
 
 /* --- MORE LINK --- */
 .moreLink {
-    margin-top: auto;
-    padding-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .moreLink a {
-    transition: opacity 0.2s ease;
-    color: #00aced;
-    font-weight: bold;
-    font-size: 1rem;
-    text-decoration: none;
+  transition: opacity 0.2s ease;
+  color: #00aced;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
 }
 
 .moreLink a:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .ingList {
-    /* keeps each ingredient on its own line */
+  /* keeps each ingredient on its own line */
 
-    display: -webkit-box;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-size: 0.95rem;
-    line-height: 1.4;
+  display: -webkit-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
 
-    white-space: pre-line;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    /* number of visible lines */
-    line-clamp: 6;
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  /* number of visible lines */
+  line-clamp: 6;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }

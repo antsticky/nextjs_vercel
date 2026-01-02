@@ -29,13 +29,14 @@ export default function HomePage() {
                 <div className={styles.cardImage}>
                   <img
                     src={
-                      recipe.images && Array.isArray(recipe.images) && recipe.images.length > 0
+                      recipe.images &&
+                      Array.isArray(recipe.images) &&
+                      recipe.images.length > 0
                         ? recipe.images[0]
-                        : "/placeholder.png"
+                        : '/placeholder.png'
                     }
                     alt={recipe.name}
                   />
-
                 </div>
 
                 <div className={styles.cardContent}>
@@ -64,7 +65,6 @@ export default function HomePage() {
                       )
                     })()}
                   </div>
-
                 </div>
               </div>
 

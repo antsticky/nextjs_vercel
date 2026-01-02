@@ -9,7 +9,9 @@ export default function RecipePage() {
 
   useEffect(() => {
     async function loadRecipe() {
-      const res = await fetch(process.env.NEXT_PUBLIC_FASTAPI_URL + 'recipe/' + id)
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_FASTAPI_URL + 'recipe/' + id,
+      )
       const data = await res.json()
       setRecipe(data)
     }
@@ -34,7 +36,9 @@ export default function RecipePage() {
       <h2 style={{ marginTop: '1.5rem' }}>Ingredients</h2>
       <ul>
         {recipe.ingredients?.map((ing: any, i: number) => (
-          <li key={i}>{ing.name} – {ing.quantity}</li>
+          <li key={i}>
+            {ing.name} – {ing.quantity}
+          </li>
         ))}
       </ul>
 
