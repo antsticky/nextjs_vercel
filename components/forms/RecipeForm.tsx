@@ -10,7 +10,10 @@ export default function RecipeForm() {
   const [steps, setSteps] = useState([''])
 
   // Toast state
-  const [toast, setToast] = useState<null | { type: 'success' | 'error'; message: string }>(null)
+  const [toast, setToast] = useState<null | {
+    type: 'success' | 'error'
+    message: string
+  }>(null)
 
   const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL + 'recipe'
 
@@ -45,9 +48,11 @@ export default function RecipeForm() {
       setCategories([''])
       setIngredients([{ name: '', quantity: '' }])
       setSteps([''])
-
     } catch (err) {
-      setToast({ type: 'error', message: 'Error saving recipe. Please try again.' })
+      setToast({
+        type: 'error',
+        message: 'Error saving recipe. Please try again.',
+      })
       setTimeout(() => setToast(null), 3000)
     }
   }
@@ -98,7 +103,10 @@ export default function RecipeForm() {
             className={styles.input}
           />
         ))}
-        <button type="button" onClick={() => setCategories([...categories, ''])}>
+        <button
+          type="button"
+          onClick={() => setCategories([...categories, ''])}
+        >
           + Add Category
         </button>
 
@@ -130,7 +138,9 @@ export default function RecipeForm() {
         ))}
         <button
           type="button"
-          onClick={() => setIngredients([...ingredients, { name: '', quantity: '' }])}
+          onClick={() =>
+            setIngredients([...ingredients, { name: '', quantity: '' }])
+          }
         >
           + Add Ingredient
         </button>

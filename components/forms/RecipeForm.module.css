@@ -3,26 +3,26 @@
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  background: #051c2c;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 700px;
+  animation: fadeIn 0.4s ease;
   margin: 0 auto;
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.05),
     0 8px 24px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 0.4s ease;
+  border-radius: 16px;
+  background: #051c2c;
+  padding: 2rem;
+  max-width: 700px;
 }
 
 /* Smooth fade-in */
 @keyframes fadeIn {
   from {
-    opacity: 0;
     transform: translateY(6px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -30,26 +30,26 @@
 .sectionTitle,
 .form h2 {
   margin: 0;
-  padding-bottom: 0.4rem;
   border-bottom: 2px solid #00aced;
-  font-size: 1.3rem;
-  font-weight: 600;
+  padding-bottom: 0.4rem;
   color: #ffffff;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 /* --- INPUTS & TEXTAREAS --- */
 .input,
 .textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  border: 1px solid #00aced;
-  background: #051c2c;
-  font-size: 1rem;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
     box-shadow 0.2s ease;
+  border: 1px solid #00aced;
+  border-radius: 10px;
+  background: #051c2c;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  font-size: 1rem;
 }
 
 .input:hover,
@@ -60,9 +60,9 @@
 .input:focus,
 .textarea:focus {
   outline: none;
-  background: #00aced;
-  border-color: #00aced;
   box-shadow: 0 0 0 3px rgba(0, 118, 255, 0.15);
+  border-color: #00aced;
+  background: #00aced;
 }
 
 /* --- INGREDIENT ROW --- */
@@ -81,15 +81,15 @@
 /* --- BUTTONS --- */
 .form button[type='button'],
 .submitWrapper button {
-  padding: 0.7rem 1.1rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
   transition:
     background 0.2s ease,
     transform 0.1s ease,
     box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.95rem;
 }
 
 /* Add buttons */
@@ -108,10 +108,10 @@
 
 /* Submit button */
 .submitWrapper button {
+  box-shadow: 0 2px 6px rgba(0, 118, 255, 0.3);
   background: #00aced;
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0, 118, 255, 0.3);
 }
 
 .submitWrapper button:hover {
@@ -124,47 +124,48 @@
 
 /* --- SUCCESS MESSAGE --- */
 .successMessage {
+  animation: fadeIn 0.3s ease;
   margin-top: 1rem;
-  padding: 0.9rem 1.2rem;
-  background: #e8ffe8;
   border: 1px solid #b6e6b6;
   border-radius: 10px;
+  background: #e8ffe8;
+  padding: 0.9rem 1.2rem;
   color: #0a8a0a;
   font-weight: 600;
-  animation: fadeIn 0.3s ease;
 }
 
 /* --- RESPONSIVE PADDING --- */
 @media (max-width: 480px) {
   .form {
-    padding: 1.4rem;
     border-radius: 12px;
+    padding: 1.4rem;
   }
 }
 
 /* --- CENTER POPUP FEEDBACK --- */
 .toast {
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.6);
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 9999;
+
+  animation:
+    popupIn 0.35s ease forwards,
+    popupOut 0.4s ease 2.2s forwards;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
 
   color: #fff;
   font-weight: 600;
   text-align: center;
-
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-  z-index: 9999;
-
-  animation: popupIn 0.35s ease forwards,
-             popupOut 0.4s ease 2.2s forwards;
 }
 
 /* Success bubble */
@@ -179,9 +180,9 @@
 
 /* Icon inside the circle */
 .toastIcon {
+  margin-bottom: 0.4rem;
   font-size: 3rem;
   line-height: 1;
-  margin-bottom: 0.4rem;
 }
 
 /* Checkmark / Cross animation */
@@ -193,20 +194,20 @@
 /* Popup scale animation */
 @keyframes popupIn {
   from {
-    opacity: 0;
     transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
 }
 
 /* Fade + shrink out */
 @keyframes popupOut {
   to {
-    opacity: 0;
     transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
   }
 }
 
@@ -221,4 +222,3 @@
     opacity: 1;
   }
 }
-

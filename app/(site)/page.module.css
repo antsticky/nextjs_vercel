@@ -1,0 +1,163 @@
+/* --- PAGE LAYOUT --- */
+.container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1100px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: #00aced;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.4rem;
+  color: #00aced;
+  font-size: 1.4rem;
+}
+
+/* --- RESPONSIVE GRID --- */
+.grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- CARD BASE --- */
+.card {
+  perspective: 1000px;
+  min-height: 360px;
+  /* FIX: ensures card is visible */
+}
+
+.cardInner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+.card:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+/* --- FRONT & BACK SHARED --- */
+.cardFront,
+.cardBack {
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --- FRONT SIDE --- */
+.cardFront {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.08);
+  background: #00aced;
+  color: #fff;
+}
+
+/* --- BACK SIDE --- */
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  background: #051c2c;
+  padding: 1rem;
+  color: #fff;
+}
+
+.backTitle {
+  margin: 0 0 0.6rem 0;
+  border-bottom: 2px solid #00aced;
+  padding-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.ingList {
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  list-style: none;
+}
+
+/* --- IMAGE --- */
+.cardImage {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.cardImage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- CONTENT BELOW IMAGE --- */
+.cardContent {
+  padding: 1rem 1.2rem;
+}
+
+/* --- TITLE --- */
+.cardTitle {
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 1.2rem;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* --- PILLS --- */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill {
+  border-radius: 999px;
+  background: #051c2c;
+  padding: 0.25rem 0.7rem;
+  max-width: 150px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
