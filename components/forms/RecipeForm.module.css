@@ -1,0 +1,143 @@
+/* --- FORM CONTAINER --- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: #051c2c;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Smooth fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- TITLES --- */
+.sectionTitle,
+.form h2 {
+  margin: 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #00aced;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* --- INPUTS & TEXTAREAS --- */
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #00aced;
+  background: #051c2c;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input:hover,
+.textarea:hover {
+  background: #00aced;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background: #00aced;
+  border-color: #00aced;
+  box-shadow: 0 0 0 3px rgba(0, 118, 255, 0.15);
+}
+
+/* --- INGREDIENT ROW --- */
+.ingredientRow {
+  display: flex;
+  gap: 12px;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+  .ingredientRow {
+    flex-direction: column;
+  }
+}
+
+/* --- BUTTONS --- */
+.form button[type='button'],
+.submitWrapper button {
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Add buttons */
+.form button[type='button'] {
+  background: #051c2c;
+  color: #ffffff;
+}
+
+.form button[type='button']:hover {
+  background: #00aced;
+}
+
+.form button[type='button']:active {
+  transform: scale(0.97);
+}
+
+/* Submit button */
+.submitWrapper button {
+  background: #00aced;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 118, 255, 0.3);
+}
+
+.submitWrapper button:hover {
+  background: #00aced;
+}
+
+.submitWrapper button:active {
+  transform: scale(0.97);
+}
+
+/* --- SUCCESS MESSAGE --- */
+.successMessage {
+  margin-top: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: #e8ffe8;
+  border: 1px solid #b6e6b6;
+  border-radius: 10px;
+  color: #0a8a0a;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+/* --- RESPONSIVE PADDING --- */
+@media (max-width: 480px) {
+  .form {
+    padding: 1.4rem;
+    border-radius: 12px;
+  }
+}

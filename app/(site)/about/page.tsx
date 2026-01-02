@@ -1,13 +1,15 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 
 export default async function AboutPage() {
-  const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL;
-  console.log("FASTAPI_URL =", process.env.NEXT_PUBLIC_FASTAPI_URL);
+  const apiUrl = process.env.NEXT_PUBLIC_FASTAPI_URL
+  console.log('FASTAPI_URL =', process.env.NEXT_PUBLIC_FASTAPI_URL)
 
-  if (!apiUrl) { throw new Error("FASTAPI_URL is not defined"); }
+  if (!apiUrl) {
+    throw new Error('FASTAPI_URL is not defined')
+  }
 
-  const res = await fetch(apiUrl, { cache: "no-store" });
-  const data = await res.json();
+  const res = await fetch(apiUrl, { cache: 'no-store' })
+  const data = await res.json()
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -17,9 +19,10 @@ export default async function AboutPage() {
       </p>
 
       <p>
-        This application demonstrates how to build a Next.js project with a dynamic hamburger menu,
-        infinite scrolling homepage, and responsive panels...
+        This application demonstrates how to build a Next.js project with a
+        dynamic hamburger menu, infinite scrolling homepage, and responsive
+        panels...
       </p>
     </div>
-  );
+  )
 }

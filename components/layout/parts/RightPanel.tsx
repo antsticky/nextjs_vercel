@@ -19,7 +19,10 @@ export default function RightPanel({
       {tab === 'about' && (
         <>
           <h2>About</h2>
-          <p>This application demonstrates Next.js with a dynamic menu and infinite scroll.</p>
+          <p>
+            This application demonstrates Next.js with a dynamic menu and
+            infinite scroll.
+          </p>
         </>
       )}
 

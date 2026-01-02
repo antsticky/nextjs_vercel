@@ -1,10 +1,89 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 export default function HomePage() {
+  const [recipes, setRecipes] = useState<{ [key: string]: any }>({})
+
+  useEffect(() => {
+    async function loadRecipes() {
+      const res = await fetch(process.env.NEXT_PUBLIC_FASTAPI_URL + 'recipe')
+      const data = await res.json()
+      setRecipes(data)
+    }
+    loadRecipes()
+  }, [])
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Welcome</h1>
-      <p>
-        oksa
-      </p>
+    <div
+      style={{
+        padding: '2rem',
+        maxWidth: '800px',
+        margin: '0 auto',
+        fontFamily: 'Arial, sans-serif',
+      }}
+    >
+      <h1
+        style={{
+          fontSize: '2rem',
+          marginBottom: '1rem',
+          color: '#00aced',
+        }}
+      >
+        Welcome
+      </h1>
+
+      <h2
+        style={{
+          fontSize: '1.4rem',
+          marginBottom: '1rem',
+          borderBottom: '2px solid #eee',
+          paddingBottom: '0.4rem',
+          color: '#00aced',
+        }}
+      >
+        Recipes
+      </h2>
+
+      <ul
+        style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem',
+        }}
+      >
+        {Object.entries(recipes).map(([id, recipe]) => (
+          <li
+            key={id}
+            style={{
+              padding: '1rem 1.25rem',
+              background: '#00aced',
+              borderRadius: '10px',
+              boxShadow:
+                '0 2px 6px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.08)',
+              fontSize: '1rem',
+              color: '#333',
+              cursor: 'pointer',
+              transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)'
+              e.currentTarget.style.boxShadow =
+                '0 4px 10px rgba(0,0,0,0.08), 0 10px 24px rgba(0,0,0,0.12)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow =
+                '0 2px 6px rgba(0,0,0,0.05), 0 6px 18px rgba(0,0,0,0.08)'
+            }}
+          >
+            {recipe.categories?.[0] || `Recipe ${id}`}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

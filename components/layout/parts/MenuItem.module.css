@@ -1,6 +1,6 @@
 .menuItem {
-  margin-bottom: 1rem;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .menuItem:hover {

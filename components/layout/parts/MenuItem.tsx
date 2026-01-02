@@ -12,11 +12,7 @@ export default function MenuItem({
   onClick: () => void
 }) {
   return (
-    <li
-      className={styles.menuItem}
-      onMouseEnter={onHover}
-      onClick={onClick}
-    >
+    <li className={styles.menuItem} onMouseEnter={onHover} onClick={onClick}>
       {label}
     </li>
   )

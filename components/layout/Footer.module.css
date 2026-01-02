@@ -1,15 +1,15 @@
 .footer {
-  width: 100%;
-  padding: 0.2rem 0;
-  text-align: center;
-  font-size: 0.875rem;
-  color: #6b7280; /* gray-500 */
   border-top: 1px solid #e5e7eb; /* gray-200 */
   background: #fafafa;
+  padding: 0.2rem 0;
+  width: 100%;
+  color: #6b7280; /* gray-500 */
+  font-size: 0.875rem;
+  text-align: center;
 }
 
 .inner {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  max-width: 1200px;
 }

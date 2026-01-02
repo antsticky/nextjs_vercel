@@ -1,12 +1,12 @@
 .rightPanel {
   position: relative;
   flex: 1;
-  background: #051C2C;
-  padding: 1rem;
-  padding-left: 80px;
-  padding-top: 120px;
   opacity: 0;
   animation: fadeInRight 0.3s ease forwards;
+  background: #051c2c;
+  padding: 1rem;
+  padding-top: 120px;
+  padding-left: 80px;
 }
 
 @media (max-width: 639px) {
@@ -17,11 +17,11 @@
 
 @keyframes fadeInRight {
   from {
-    opacity: 0;
     transform: translateX(8px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }

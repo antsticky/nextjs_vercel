@@ -10,17 +10,12 @@ import { useSwipeMenu } from './hooks/useSwipeMenu'
 import { useMenuState } from './hooks/useMenuState'
 
 export default function Header() {
-  const {
-    open,
-    setOpen,
-    hoveredTab,
-    setHoveredTab,
-    handleNavigation,
-  } = useMenuState()
+  const { open, setOpen, hoveredTab, setHoveredTab, handleNavigation } =
+    useMenuState()
 
   const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipeMenu(
     () => setOpen(true),
-    () => setOpen(false)
+    () => setOpen(false),
   )
 
   return (
@@ -32,18 +27,18 @@ export default function Header() {
     >
       <HeaderBar onToggle={() => setOpen(!open)} />
 
-      <div className={styles.overlay}>
-        <LeftPanel
-          isOpen={open}
-          onHover={setHoveredTab}
-          onNavigate={handleNavigation}
-          onLeave={() => setHoveredTab(null)}
-        />
+      {open && (
+        <div className={styles.overlay}>
+          <LeftPanel
+            isOpen={open}
+            onHover={setHoveredTab}
+            onNavigate={handleNavigation}
+            onLeave={() => setHoveredTab(null)}
+          />
 
-        {open && hoveredTab && <RightPanel tab={hoveredTab} />}
-
-      </div>
-
+          {hoveredTab && <RightPanel tab={hoveredTab} />}
+        </div>
+      )}
     </div>
   )
 }

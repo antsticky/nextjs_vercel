@@ -20,14 +20,14 @@ export default function MenuList({
 
       <MenuItem
         label="Add New"
-        onHover={() => onHover('about')}
-        onClick={() => onNavigate('about', '/about')}
+        onHover={() => onHover('settings')}
+        onClick={() => onNavigate('settings', '/settings')}
       />
 
       <MenuItem
         label="About"
-        onHover={() => onHover('settings')}
-        onClick={() => onNavigate('settings', '/settings')}
+        onHover={() => onHover('about')}
+        onClick={() => onNavigate('about', '/about')}
       />
     </ul>
   )

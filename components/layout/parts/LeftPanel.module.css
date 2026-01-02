@@ -1,30 +1,38 @@
 .leftPanel {
   position: relative;
   z-index: 2001;
-  width: 150px;
+  clip-path: inset(0 100% 0 0);
   background: #222;
-  color: #fff;
-  text-align: left;
   padding: 1rem;
   padding-top: 120px;
   padding-left: 3rem;
-  clip-path: inset(0 100% 0 0);
+  width: 150px;
+  color: #fff;
+  text-align: left;
 }
 
 @keyframes curtainReveal {
-  0% { clip-path: inset(0 100% 0 0); }
-  100% { clip-path: inset(0 0 0 0); }
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
-@keyframes curtainClose { 
-  0% { clip-path: inset(0 0 0 0); }
-  100% { clip-path: inset(0 100% 0 0); }
+@keyframes curtainClose {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
 }
 
 .menuList {
-  list-style: none;
   padding: 0;
   padding-top: 60px;
+  list-style: none;
   text-align: center;
 }
 

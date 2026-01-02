@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -19,9 +19,10 @@
   }
 }
 
-html, body {
-  height: 100%;        /* ⭐ Required for flex layout */
+html,
+body {
   margin: 0;
+  height: 100%; /* ⭐ Required for flex layout */
 }
 
 body {
@@ -32,28 +33,35 @@ body {
 
 /* ⭐ Replaces min-height: 100vh */
 .pageWrapper {
-  min-height: 100%;    /* Use real document height */
   display: flex;
   flex-direction: column;
+  min-height: 100%; /* Use real document height */
 }
 
 .pageWrapper main {
+  flex: 1; /* ⭐ Pushes footer to bottom */
   padding-top: 89px;
-  flex: 1;             /* ⭐ Pushes footer to bottom */
 }
 
 /* Mobile — fixed padding */
 @media (max-width: 639px) {
   .pageWrapper main {
-    padding-left: 16px;
     padding-right: 16px;
+    padding-left: 16px;
   }
 }
 
 /* Tablet + Desktop — fluid padding */
 @media (min-width: 640px) {
   .pageWrapper main {
-    padding-left: clamp(40px, 8vw, 200px);
     padding-right: clamp(40px, 8vw, 200px);
+    padding-left: clamp(40px, 8vw, 200px);
   }
+}
+
+h1 {
+  color: #00aced;
+  font-weight: bold;
+  font-size: 1.875rem;
+  padding-bottom: 2rem;
 }
