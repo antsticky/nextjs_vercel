@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import styles from './about.module.css'
 
 export default async function AboutPage() {
