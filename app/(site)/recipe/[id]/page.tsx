@@ -82,7 +82,6 @@ export default function RecipePage() {
                     />
                   </div>
                 </SwiperSlide>
-
               ))}
             </Swiper>
           </div>

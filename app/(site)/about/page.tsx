@@ -32,7 +32,7 @@ export default async function AboutPage() {
 
   try {
     const res = await fetch(process.env.NEXT_PUBLIC_FASTAPI_URL + 'about', {
-      cache: 'no-store'
+      cache: 'no-store',
     })
     about = await res.json()
   } catch (e) {
@@ -45,7 +45,7 @@ export default async function AboutPage() {
       title: 'About',
       heroImage: '',
       sections: [],
-      footerNote: ''
+      footerNote: '',
     }
   }
 

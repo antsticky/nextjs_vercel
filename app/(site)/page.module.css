@@ -225,10 +225,10 @@
   display: flex;
   flex-direction: column;
   transform: rotateY(180deg);
+  cursor: pointer;
   background: #051c2c;
   padding: 1rem;
   color: #fff;
-  cursor: pointer;
   /* makes it feel clickable */
   user-select: none;
   /* prevents accidental text selection */

@@ -24,14 +24,11 @@ export default function HomePage() {
         {Object.entries(recipes).map(([id, recipe]) => (
           <li key={id} className={styles.card}>
             <div className={styles.cardInner}>
-
               {/* FRONT */}
               <div className={styles.cardFront}>
                 <div className={styles.cardImage}>
                   <img
-                    src={
-                      recipe.images?.[0] || '/placeholder.png'
-                    }
+                    src={recipe.images?.[0] || '/placeholder.png'}
                     alt={recipe.name}
                   />
                 </div>
@@ -91,9 +88,10 @@ export default function HomePage() {
                   })()}
                 </div>
 
-                <div className={styles.moreLink}><a href={`/recipe/${id}`}>More…</a></div>
+                <div className={styles.moreLink}>
+                  <a href={`/recipe/${id}`}>More…</a>
+                </div>
               </div>
-
             </div>
           </li>
         ))}
