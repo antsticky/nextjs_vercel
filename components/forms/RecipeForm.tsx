@@ -62,9 +62,8 @@ export default function RecipeForm() {
       {/* Toast Popup */}
       {toast && (
         <div
-          className={`${styles.toast} ${
-            toast.type === 'success' ? styles.toastSuccess : styles.toastError
-          }`}
+          className={`${styles.toast} ${toast.type === 'success' ? styles.toastSuccess : styles.toastError
+            }`}
         >
           <div className={styles.toastIcon}>
             {toast.type === 'success' ? (

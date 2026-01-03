@@ -1,0 +1,55 @@
+.container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #00aced;
+}
+
+.heroImage {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.apiBox {
+    background: #f7f9fa;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #00aced;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 1.4rem;
+    color: #00aced;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.contactList {
+    padding-left: 1.2rem;
+}
+
+.footerNote {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.highlight {
+    color: #00aced;
+}
