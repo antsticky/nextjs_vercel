@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        © {new Date().getFullYear()} MySite — Total Viewers: 4o4
+        © {new Date().getFullYear()} antsticky — Total Viewers: 4o4
       </div>
     </footer>
   )
