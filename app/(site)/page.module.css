@@ -219,3 +219,24 @@
   text-overflow: ellipsis;
   word-break: break-word;
 }
+
+/* --- BACK SIDE --- */
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  background: #051c2c;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+  /* makes it feel clickable */
+  user-select: none;
+  /* prevents accidental text selection */
+  text-decoration: none;
+  /* behaves like a link */
+}
+
+.cardBack:hover {
+  opacity: 0.95;
+  /* subtle hover feedback */
+}

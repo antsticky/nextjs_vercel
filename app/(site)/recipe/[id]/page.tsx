@@ -70,12 +70,19 @@ export default function RecipePage() {
             >
               {recipe.images.map((img: string, i: number) => (
                 <SwiperSlide key={i}>
-                  <img
-                    src={normalizeImage(img)}
-                    alt=""
-                    className={styles.slideImage}
-                  />
+                  <div className={styles.slideImageWrapper}>
+                    <img
+                      src={normalizeImage(img)}
+                      alt=""
+                      className={styles.slideImage}
+                    />
+                    <div
+                      className={styles.slideBg}
+                      style={{ backgroundImage: `url(${normalizeImage(img)})` }}
+                    />
+                  </div>
                 </SwiperSlide>
+
               ))}
             </Swiper>
           </div>

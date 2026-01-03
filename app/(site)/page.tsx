@@ -24,16 +24,13 @@ export default function HomePage() {
         {Object.entries(recipes).map(([id, recipe]) => (
           <li key={id} className={styles.card}>
             <div className={styles.cardInner}>
+
               {/* FRONT */}
               <div className={styles.cardFront}>
                 <div className={styles.cardImage}>
                   <img
                     src={
-                      recipe.images &&
-                      Array.isArray(recipe.images) &&
-                      recipe.images.length > 0
-                        ? recipe.images[0]
-                        : '/placeholder.png'
+                      recipe.images?.[0] || '/placeholder.png'
                     }
                     alt={recipe.name}
                   />
@@ -48,7 +45,6 @@ export default function HomePage() {
                     {(() => {
                       const maxPills = 2
                       const cats = recipe.categories || []
-
                       const visible = cats.slice(0, maxPills)
                       const hasMore = cats.length > maxPills
 
@@ -59,7 +55,6 @@ export default function HomePage() {
                               {cat}
                             </span>
                           ))}
-
                           {hasMore && <span className={styles.pill}>…</span>}
                         </>
                       )
@@ -68,19 +63,19 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* BACK */}
-              {/* BACK */}
-              <div className={styles.cardBack}>
+              {/* BACK — FULLY CLICKABLE */}
+              <div
+                className={styles.cardBack}
+                onClick={() => (window.location.href = `/recipe/${id}`)}
+              >
                 <h3 className={styles.backTitle}>Ingredients</h3>
 
                 <div className={styles.ingList}>
                   {(() => {
                     const maxLines = 5
                     const ings = recipe.ingredients || []
-
                     const visibleIngredients =
                       ings.length <= maxLines ? ings : ings.slice(0, maxLines)
-
                     const hasMore = ings.length > maxLines
 
                     return (
@@ -90,17 +85,15 @@ export default function HomePage() {
                             {ing.name} – {ing.quantity}
                           </div>
                         ))}
-
                         {hasMore && <div className={styles.ellipsis}>…</div>}
                       </div>
                     )
                   })()}
                 </div>
 
-                <div className={styles.moreLink}>
-                  <a href={`/recipe/${id}`}>More…</a>
-                </div>
+                <div className={styles.moreLink}><a href={`/recipe/${id}`}>More…</a></div>
               </div>
+
             </div>
           </li>
         ))}
