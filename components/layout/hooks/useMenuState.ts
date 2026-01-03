@@ -6,12 +6,12 @@ import { useRouter } from 'next/navigation'
 export function useMenuState() {
   const [open, setOpen] = useState(false)
   const [hoveredTab, setHoveredTab] = useState<
-    'home' | 'about' | 'settings' | null
+    'home' | 'about' | 'new_recipe' | null
   >(null)
   const router = useRouter()
 
   const handleNavigation = (
-    tab: 'home' | 'about' | 'settings',
+    tab: 'home' | 'about' | 'new_recipe',
     path: string,
   ) => {
     setOpen(false)

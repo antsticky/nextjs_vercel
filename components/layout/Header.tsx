@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import styles from './Header.module.css'
 
 import HeaderBar from './parts/HeaderBar'
@@ -18,6 +19,27 @@ export default function Header() {
     () => setOpen(false),
   )
 
+  // ⬇️ NEW: detect clicks outside the left panel
+  const leftPanelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (!open) return
+
+      if (
+        leftPanelRef.current &&
+        !leftPanelRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false)
+        setHoveredTab(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [open, setOpen, setHoveredTab])
+  // ⬆️ END NEW
+
   return (
     <div
       className={styles.swipeLayer}
@@ -29,12 +51,14 @@ export default function Header() {
 
       {open && (
         <div className={styles.overlay}>
-          <LeftPanel
-            isOpen={open}
-            onHover={setHoveredTab}
-            onNavigate={handleNavigation}
-            onLeave={() => setHoveredTab(null)}
-          />
+          <div ref={leftPanelRef}>
+            <LeftPanel
+              isOpen={open}
+              onHover={setHoveredTab}
+              onNavigate={handleNavigation}
+              onLeave={() => setHoveredTab(null)}
+            />
+          </div>
 
           {hoveredTab && <RightPanel tab={hoveredTab} />}
         </div>

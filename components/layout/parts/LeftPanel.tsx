@@ -10,8 +10,8 @@ export default function LeftPanel({
   onLeave,
 }: {
   isOpen: boolean
-  onHover: (tab: 'home' | 'about' | 'settings') => void
-  onNavigate: (tab: 'home' | 'about' | 'settings', path: string) => void
+  onHover: (tab: 'home' | 'about' | 'new_recipe') => void
+  onNavigate: (tab: 'home' | 'about' | 'new_recipe', path: string) => void
   onLeave: () => void
 }) {
   return (

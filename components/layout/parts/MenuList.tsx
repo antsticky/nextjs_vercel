@@ -7,8 +7,8 @@ export default function MenuList({
   onHover,
   onNavigate,
 }: {
-  onHover: (tab: 'home' | 'about' | 'settings') => void
-  onNavigate: (tab: 'home' | 'about' | 'settings', path: string) => void
+  onHover: (tab: 'home' | 'about' | 'new_recipe') => void
+  onNavigate: (tab: 'home' | 'about' | 'new_recipe', path: string) => void
 }) {
   return (
     <ul className={styles.menuList}>
@@ -20,8 +20,8 @@ export default function MenuList({
 
       <MenuItem
         label="Add New"
-        onHover={() => onHover('settings')}
-        onClick={() => onNavigate('settings', '/settings')}
+        onHover={() => onHover('new_recipe')}
+        onClick={() => onNavigate('new_recipe', '/new_recipe')}
       />
 
       <MenuItem

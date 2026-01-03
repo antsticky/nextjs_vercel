@@ -1,55 +1,55 @@
 .container {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 900px;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
 }
 
 .title {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    color: #00aced;
+  margin-bottom: 1rem;
+  color: #00aced;
+  font-size: 2.2rem;
 }
 
 .heroImage {
-    width: 100%;
-    max-height: 320px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
 }
 
 .apiBox {
-    background: #f7f9fa;
-    padding: 1rem 1.5rem;
-    border-left: 4px solid #00aced;
-    border-radius: 6px;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #00aced;
+  border-radius: 6px;
+  background: #f7f9fa;
+  padding: 1rem 1.5rem;
 }
 
 .section {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .sectionTitle {
-    font-size: 1.4rem;
-    color: #00aced;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 0.4rem;
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.4rem;
+  color: #00aced;
+  font-size: 1.4rem;
 }
 
 .contactList {
-    padding-left: 1.2rem;
+  padding-left: 1.2rem;
 }
 
 .footerNote {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    color: #777;
+  margin-top: 3rem;
+  color: #777;
+  font-size: 0.9rem;
 }
 
 .highlight {
-    color: #00aced;
+  color: #00aced;
 }
